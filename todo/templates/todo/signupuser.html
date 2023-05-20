@@ -5,6 +5,12 @@
     <title>SignUp</title>
 </head>
 <body>
-    SignUp
+<h2>Sign Up</h2>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">SignUp</button>
+</form>
+
 </body>
 </html>
