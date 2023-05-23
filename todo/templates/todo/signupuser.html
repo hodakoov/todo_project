@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SignUp</title>
-</head>
-<body>
+{% extends 'todo/base.html' %}
+
+{% block title %}SignUp{% endblock %}
+
+{% block content %}
+
 <h2>Sign Up</h2>
 
 <h3>{{ error }}</h3>
@@ -14,5 +13,4 @@
     <button type="submit">SignUp</button>
 </form>
 
-</body>
-</html>
+{% endblock %}
