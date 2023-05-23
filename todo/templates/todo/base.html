@@ -6,14 +6,14 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-        Logged In as {{ user.username }}<br>
+        Произведен вход в аккаунт {{ user.username }}<br>
         <form action="{% url 'logoutuser' %}" method="POST">
             {% csrf_token %}
-            <button type="submit">Logout</button>
+            <button type="submit">Выход</button>
         </form>
     {% else %}
-        <a href="#">Sign Up</a><br>
-        <a href="#">Login</a>
+        <a href="{% url 'signupuser' %}">Регистрация</a><br>
+        <a href="{% url 'loginuser' %}">Вход</a>
     {% endif %}
     <br><br>
     {% block content %}{% endblock %}
