@@ -8,11 +8,15 @@
 
     {{ error }}
 
-    <form method="post">
+    <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Сохранить</button>
     </form>
 
+    <form method="POST" action="{% url 'completetodo' todo.id %}">
+    {% csrf_token %}
+    <button type="submit">Выполнено</button>
+    </form>
 
 {% endblock %}
