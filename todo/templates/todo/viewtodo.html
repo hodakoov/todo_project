@@ -4,7 +4,15 @@
 
 {% block content %}
 <h2>Ваши заметки</h2>
-{{ todo.title }}
-{{ todo.memo }}
+    {{ todo.title }}
+
+    {{ error }}
+
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+    </form>
+
 
 {% endblock %}
