@@ -3,19 +3,40 @@
 {% block title %}Текущие задачи{% endblock %}
 
 {% block content %}
-Текущие задачи
-<ul>
-    {% for todo in todos %}
-    <li>
-        <a href="{% url 'viewtodo' todo.id %}">
-            {% if todo.important %} <b> {% endif %}
-            {{ todo.title }}
-            {% if todo.important %} </b> {% endif %}
-            {% if todo.memo %} - {{ todo.memo }}
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if todos %}
+                <h1>Количество текущих задач - {{ todos.count }}</h1>
+            {% else %}
+                <h1>Текущие задачи</h1>
             {% endif %}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if todos %}
+            <div class="list-group">
+                {% for todo in todos %}
+                    <a href="{% url 'viewtodo' todo.id %}"
+                       class="list-group-item list-group-item-action
+                        {% if todo.important %} list-group-item-danger{% endif %}">
+                        <b>{{ todo.title }}</b>
+                        {% if todo.memo %} - {{ todo.memo|truncatechars:30 }}{% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2>Похоже, у вас нет задач! Хорошая работа.</h2>
+            <br>
+            <a role="button" class="btn btn-primary"
+               href="{% url 'createtodo' %}">Создать задачу
+            </a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+
 {% endblock %}
 
